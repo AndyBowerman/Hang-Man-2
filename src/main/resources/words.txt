@@ -1,0 +1,10 @@
+cat
+dog
+walk
+swim
+sweet
+chair
+laptop
+pillow
+twisted
+circles
