@@ -25,7 +25,7 @@ import java.util.Scanner;
 
 public class HangMan {
     public static void main(String[] args) throws FileNotFoundException {
-        SelectWord selectWord = new SelectWord();
-        System.out.println(selectWord.getNumberOfWords());
+        AvailableWords availableWords = new AvailableWords();
+        System.out.println(availableWords.getExpertWords());
     }
 }

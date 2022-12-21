@@ -7,11 +7,11 @@ public class DifficultyLevel {
         this.level = level;
     }
 
-    public AvailableLevels getLevel() {
-        return level;
-    }
-
     public void setLevel(AvailableLevels level) {
         this.level = level;
+    }
+
+    public AvailableLevels getLevel() {
+        return level;
     }
 }
