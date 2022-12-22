@@ -18,14 +18,9 @@ shown guesses made & word with correct guesses unveiled
 shown hangman image
  */
 
-
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.Scanner;
-
 public class HangMan {
-    public static void main(String[] args) throws FileNotFoundException {
-        AvailableWords availableWords = new AvailableWords();
-        System.out.println(availableWords.getExpertWords());
+    public static void main(String[] args) {
+//        RunGame runGame = new RunGame();
+//        runGame.startGame();
     }
 }
