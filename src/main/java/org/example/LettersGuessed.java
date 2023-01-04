@@ -8,11 +8,15 @@ public class LettersGuessed {
     private Set<String> lettersGuessed = new HashSet<>();
 
     public void addLetters(String letter) {
-        lettersGuessed.add(letter);
+        lettersGuessed.add(letter.toUpperCase());
     }
 
-    public String getLettersGuessed() {
-        String guesses = "Guesses: ";
+    public Set<String> getLettersGuessed() {
+        return lettersGuessed;
+    }
+
+    public String printLettersGuessed() {
+        String guesses = "Previous guesses: ";
         for (String letter: lettersGuessed) {
             guesses += letter.toUpperCase() + " ";
         }

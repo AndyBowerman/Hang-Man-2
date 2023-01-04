@@ -43,22 +43,41 @@ public class RunGame {
             System.out.println("Level: Expert");
             selectWord = new SelectWord(AvailableLevels.EXPERT);
         }
-        System.out.println("Here's your word");
-        System.out.println(handleGuesses.checkGuesses(selectWord.getWord()));
+        System.out.println("Here's your word: " + handleGuesses.checkGuesses(selectWord.getWord()));
         checkGuesses(selectWord.getWord());
     }
 
     public void checkGuesses(String selectWord) {
-        while(lives.getLives() > -1 && lives.getCorrectGuesses() != selectWord.length()) {
+        while (lives.getLives() > 0 && lives.getCorrectGuesses() < selectWord.length()) {
+            System.out.println(Drawings.drawHangMan(lives.getLives()));
+            System.out.println("Remaining lives: " + lives.getLives());
+            System.out.println(handleGuesses.lettersGuessed.printLettersGuessed());
             System.out.println("Make your next guess");
             String input = scanner.next();
-            handleGuesses.lettersGuessed.addLetters(input);
-            System.out.println(handleGuesses.checkGuesses(selectWord));
-            if(selectWord.contains(input) && !handleGuesses.lettersGuessed.getLettersGuessed().contains(input)) {
-                lives.incrementCorrectGuesses();
+            if (handleGuesses.lettersGuessed.getLettersGuessed().contains(input)) {
+                System.out.println("You've already tried this letter!");
             } else {
-                lives.reduceLives();
+                handleGuesses.lettersGuessed.addLetters(input);
+                System.out.println(handleGuesses.checkGuesses(selectWord));
+                if (selectWord.contains(input)) {
+                    lives.incrementCorrectGuesses();
+                } else {
+                    lives.reduceLives();
+                }
             }
+        }
+        declareResult();
+    }
+
+    public void declareResult() {
+        if (lives.getLives() > 0) {
+            System.out.println("Correct");
+            System.out.println("You win!");
+        } else {
+            System.out.println(Drawings.drawHangMan(lives.getLives()));
+            System.out.println("You lose!");
+            System.out.println("The answer was " + selectWord.getWord().toUpperCase());
         }
     }
 }
+
