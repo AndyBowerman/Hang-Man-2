@@ -47,6 +47,16 @@ public class RunGame {
         checkGuesses(selectWord.getWord());
     }
 
+    public boolean checkGuessInput(String input) {
+        Pattern pattern = Pattern.compile("[A-Z]");
+        Matcher matcher = pattern.matcher(input.toUpperCase());
+        if (matcher.find()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public void checkGuesses(String selectWord) {
         while (lives.getLives() > 0 && lives.getCorrectGuesses() < selectWord.length()) {
             System.out.println(Drawings.drawHangMan(lives.getLives()));
@@ -54,7 +64,9 @@ public class RunGame {
             System.out.println(handleGuesses.lettersGuessed.printLettersGuessed());
             System.out.println("Make your next guess");
             String input = scanner.next();
-            if (handleGuesses.lettersGuessed.getLettersGuessed().contains(input)) {
+            if(!checkGuessInput(input)) {
+                System.out.println("Invalid input, please enter a letter!");
+            } else if (handleGuesses.lettersGuessed.getLettersGuessed().contains(input.toUpperCase())) {
                 System.out.println("You've already tried this letter!");
             } else {
                 handleGuesses.lettersGuessed.addLetters(input);
